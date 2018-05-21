@@ -1,0 +1,490 @@
+//常用变量
+@main_width:1200px;//内宽
+@main_color:#ef660d;//主体颜色
+@line_color:#dbdbdb;//线颜色
+@border_color:#e5e5e5;//边框颜色
+@bg_gray:#f5f5f5;   //灰色背景
+@blue:#469bf5;//辅色-蓝色
+@green:#56bc30;//辅色-绿色
+@pink:#fc8381;//辅色-粉色
+@orange:#ff9538;//辅色-橘色
+@input_color_placeholder:#eee;//input-placeholder颜色
+//混合
+.rect(@width:300px ,@height:100px){
+  width:@width;
+  height:@height;
+}
+.cube(@size:100px){
+  width:@size;
+  height:@size;
+}
+.circle(@size:100px){
+  .cube(@size);
+  .border-radius(50%);
+}
+.rect-radius(@width:300px ,@height:100px,@radius:10px){
+  width:@width;
+  height:@height;
+  .border-radius(@radius);
+}
+.cube-radius(@size:100px,@radius:10px){
+  width:@size;
+  height:@size;
+  .border-radius(@radius);
+}
+.lt(){
+  position: absolute;
+  left:0;
+  top:0;
+}
+.lb(){
+  position: absolute;
+  left:0;
+  bottom:0;
+}
+.rt(){
+  position: absolute;
+  right:0;
+  top:0;
+}
+.rb(){
+  position: absolute;
+  right:0;
+  bottom:0;
+}
+.lr(){
+  position: absolute;
+  left:0;
+  right:0;
+  margin:auto;
+}
+.tb(){
+  position: absolute;
+  top:0;
+  bottom:0;
+  margin:auto;
+}
+.center(){
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+}
+.cover(){
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+.z-index(@index:1){
+  -webkit-z-index:@index;
+   -khtml-z-index:@index;
+     -moz-z-index:@index;
+      -ms-z-index:@index;
+       -o-z-index:@index;
+          z-index:@index;
+}
+.border-radius(@radius:50%){
+  -webkit-border-radius:@radius;
+     -moz-border-radius:@radius;
+          border-radius:@radius;
+}
+.clearfix(@content:"",@width:0,@height:0){
+  &:after{
+    content:@content;
+    display: block;
+    width:@width;
+    height:@height;
+    clear: both;
+  }
+}
+.box-sizing(@boxmodel:border-box) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+      -ms-box-sizing: @boxmodel;
+       -o-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+.box-shadow(@shadow:0 0 10px rgba(0, 0, 0, 0.1)){
+  -webkit-box-shadow: @shadow;
+     -moz-box-shadow: @shadow;
+          box-shadow: @shadow;
+}
+.placeholder(@color: @input_color_placeholder) {
+    // Firefox
+    &::-moz-placeholder{
+      color: @color;
+      opacity: 1;
+    }
+    // Internet Explorer 10+
+    &:-ms-input-placeholder{
+        color: @color;
+    } 
+    // Safari and Chrome
+    &::-webkit-input-placeholder{
+        color: @color;
+    } 
+}
+.ellipsis(){
+  overflow: hidden;
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.ellipsis-clip(@row:2){
+  display: -webkit-box;
+  overflow: hidden;
+
+  white-space: normal !important;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+
+  -webkit-line-clamp:@row;
+  -webkit-box-orient: vertical;
+}
+.perspective(@perspective) {
+  -webkit-perspective: @perspective;
+     -moz-perspective: @perspective;
+          perspective: @perspective;
+}
+.perspective-origin(@perspective) {
+  -webkit-perspective-origin: @perspective;
+     -moz-perspective-origin: @perspective;
+          perspective-origin: @perspective;
+}
+//flex布局--容器
+.flex(){
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.flex-inline(){
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+	display: inline-flex;
+}
+.flex-direction(@param:row){
+    -webkit-flex-direction: @param;
+    -ms-flex-direction: @param;
+    flex-direction: @param;
+}
+.flex-wrap(@param:nowrap){
+    -webkit-flex-wrap: @param;
+    -ms-flex-wrap: @param;
+    flex-wrap: @param;
+}
+.flex-flow(@param:row nowrap){
+    -webkit-flex-flow: @param;
+    -ms-flex-flow: @param;
+    flex-flow: @param;
+}
+.justify-content(@param:center){
+    -webkit-justify-content: @param;
+    -ms-justify-content: @param;
+    justify-content: @param;
+}
+.align-items(@param:center){
+    -webkit-align-items: @param;
+    -ms-align-items: @param;
+    align-items: @param;
+}
+.align-content(@param:center){
+    -webkit-align-content: @param;
+    -ms-align-content: @param;
+    align-content: @param;
+}
+//flex布局--项目
+.order(@param:0){
+    -webkit-order: @param;
+    -ms-flex-order: @param;
+    order: @param;
+}
+.flex-1(@param:1){
+    -webkit-box-flex: @param;
+  -webkit-flex: @param;
+  -ms-flex: @param;
+  flex: @param;
+}
+.flex-grow(@param:1){
+    -webkit-flex-grow: @param;
+    -ms-flex-grow: @param;
+    flex-grow: @param;
+}
+.flex-shrink(@param:center){
+    -webkit-flex-shrink: @param;
+    -ms-flex-shrink: @param;
+    flex-shrink: @param;
+}
+.flex-basis(@param:auto){
+    -webkit-flex-basis: @param;
+    -ms-flex-basis: @param;
+    flex-basis: @param;
+}
+.flex-size(@param:0 1 auto){
+    -webkit-flex: @param;
+    -ms-flex: @param;
+    flex: @param;
+}
+.align-self(@param:center){
+    -webkit-align-self: @param;
+    -ms-align-self: @param;
+    align-self: @param;
+}
+//动画
+.transition(@param:all .3s ease 0){
+  -webkit-transition: @param;
+     -moz-transition: @param;
+      -ms-transition: @param;
+       -o-transition: @param;
+          transition: @param;
+}
+.animation(@param){
+  -webkit-animation:@param;
+       -o-animation:@param;
+          animation:@param;
+}
+.animation-name(@name){
+  -webkit-animation-name: @name;
+     -moz-animation-name: @name;
+       -o-animation-name: @name;
+          animation-name: @name;
+}
+.animation-duration(@duration:0.8s){
+  -webkit-animation-duration: @duration;
+     -moz-animation-duration: @duration;
+       -o-animation-duration: @duration;
+          animation-duration: @duration;
+}
+.animation-timing-function(@style:linear){
+  -webkit-animation-timing-function: @style;
+     -moz-animation-timing-function: @style;
+       -o-animation-timing-function: @style;
+          animation-timing-function: @style;
+}
+.animation-delay(@delay:0s){
+  -webkit-animation-delay: @delay;
+     -moz-animation-delay: @delay;
+       -o-animation-delay: @delay;
+          animation-delay: @delay;
+}
+.animation-iteration-count(@count:infinite){
+  -webkit-animation-iteration-count: @count;
+     -moz-animation-iteration-count: @count;
+       -o-animation-iteration-count: @count;
+          animation-iteration-count: @count;
+}
+.animation-direction(@direction:alternate){
+  -webkit-animation-direction: @direction;
+     -moz-animation-direction: @direction;
+       -o-animation-direction: @direction;
+          animation-direction: @direction;
+}
+.animation-fill-mode(@mode:both){
+  -webkit-animation-fill-mode: @mode;
+     -moz-animation-fill-mode: @mode;
+       -o-animation-fill-mode: @mode;
+          animation-fill-mode: @mode;
+}
+.transform-origin(@origin) {
+  -webkit-transform-origin: @origin;
+     -moz-transform-origin: @origin;
+      -ms-transform-origin: @origin; // IE9 only
+          transform-origin: @origin;
+}
+//位移
+.translate(@x,@y){
+  -webkit-transform:translate(@x,@y) ;
+     -moz-transform:translate(@x,@y) ;
+      -ms-transform:translate(@x,@y) ;
+       -o-transform:translate(@x,@y) ;
+          transform:translate(@x,@y) ;
+}
+.translateX(@x){
+  -webkit-transform:translateX(@x) ;
+     -moz-transform:translateX(@x) ;
+      -ms-transform:translateX(@x) ;
+       -o-transform:translateX(@x) ;
+          transform:translateX(@x) ;
+}
+.translateY(@y){
+  -webkit-transform:translateY(@y) ;
+     -moz-transform:translateY(@y) ;
+      -ms-transform:translateY(@y) ;
+       -o-transform:translateY(@y) ;
+          transform:translateY(@y) ;
+}
+.translateZ(@z){
+  -webkit-transform:translateZ(@z) ;
+     -moz-transform:translateZ(@z) ;
+      -ms-transform:translateZ(@z) ;
+       -o-transform:translateZ(@z) ;
+          transform:translateZ(@z) ;
+}
+.translate3d(@x,@y,@z){
+  -webkit-transform:translate3d(@x,@y,@z) ;
+     -moz-transform:translate3d(@x,@y,@z) ;
+      -ms-transform:translate3d(@x,@y,@z) ;
+       -o-transform:translate3d(@x,@y,@z) ;
+          transform:translate3d(@x,@y,@z) ;
+}
+//缩放
+.scale(@x,@y){
+  -webkit-transform:scale(@x,@y) ;
+     -moz-transform:scale(@x,@y) ;
+      -ms-transform:scale(@x,@y) ;
+       -o-transform:scale(@x,@y) ;
+          transform:scale(@x,@y) ;
+}
+.scaleX(@x){
+  -webkit-transform:scaleX(@x) ;
+     -moz-transform:scaleX(@x) ;
+      -ms-transform:scaleX(@x) ;
+       -o-transform:scaleX(@x) ;
+          transform:scaleX(@x) ;
+}
+.scaleY(@y){
+  -webkit-transform:scaleY(@y) ;
+     -moz-transform:scaleY(@y) ;
+      -ms-transform:scaleY(@y) ;
+       -o-transform:scaleY(@y) ;
+          transform:scaleY(@y) ;
+}
+.scaleZ(@z){
+  -webkit-transform:scaleZ(@z) ;
+     -moz-transform:scaleZ(@z) ;
+      -ms-transform:scaleZ(@z) ;
+       -o-transform:scaleZ(@z) ;
+          transform:scaleZ(@z) ;
+}
+.scale3d(@x,@y,@z){
+  -webkit-transform:scale3d(@x,@y,@z) ;
+     -moz-transform:scale3d(@x,@y,@z) ;
+      -ms-transform:scale3d(@x,@y,@z) ;
+       -o-transform:scale3d(@x,@y,@z) ;
+          transform:scale3d(@x,@y,@z) ;
+}
+//旋转
+.rotate(@angle){
+  -webkit-transform:rotate(@angle) ;
+     -moz-transform:rotate(@angle) ;
+      -ms-transform:rotate(@angle) ;
+       -o-transform:rotate(@angle) ;
+          transform:rotate(@angle) ;
+}
+.rotateX(@angle){
+  -webkit-transform:rotateX(@angle) ;
+     -moz-transform:rotateX(@angle) ;
+      -ms-transform:rotateX(@angle) ;
+       -o-transform:rotateX(@angle) ;
+          transform:rotateX(@angle) ;
+}
+.rotateY(@angle){
+  -webkit-transform:rotateY(@angle) ;
+     -moz-transform:rotateY(@angle) ;
+      -ms-transform:rotateY(@angle) ;
+       -o-transform:rotateY(@angle) ;
+          transform:rotateY(@angle) ;
+}
+.rotateZ(@angle){
+  -webkit-transform:rotateZ(@angle) ;
+     -moz-transform:rotateZ(@angle) ;
+      -ms-transform:rotateZ(@angle) ;
+       -o-transform:rotateZ(@angle) ;
+          transform:rotateZ(@angle) ;
+}
+.rotate3d(@x,@y,@z,@angle){
+  -webkit-transform:rotate3d(@x,@y,@z,@angle) ;
+     -moz-transform:rotate3d(@x,@y,@z,@angle) ;
+      -ms-transform:rotate3d(@x,@y,@z,@angle) ;
+       -o-transform:rotate3d(@x,@y,@z,@angle) ;
+          transform:rotate3d(@x,@y,@z,@angle) ;
+}
+//倾斜
+.scale(@xAngle,@yAngle){
+  -webkit-transform:scale(@xAngle,@yAngle) ;
+     -moz-transform:scale(@xAngle,@yAngle) ;
+      -ms-transform:scale(@xAngle,@yAngle) ;
+       -o-transform:scale(@xAngle,@yAngle) ;
+          transform:scale(@xAngle,@yAngle) ;
+}
+.scaleX(@xAngle){
+  -webkit-transform:scaleX(@xAngle) ;
+     -moz-transform:scaleX(@xAngle) ;
+      -ms-transform:scaleX(@xAngle) ;
+       -o-transform:scaleX(@xAngle) ;
+          transform:scaleX(@xAngle) ;
+}
+.scaleY(@yAngle){
+  -webkit-transform:scaleY(@yAngle) ;
+     -moz-transform:scaleY(@yAngle) ;
+      -ms-transform:scaleY(@yAngle) ;
+       -o-transform:scaleY(@yAngle) ;
+          transform:scaleY(@yAngle) ;
+}
+//渐变
+.gradient-tb(@c1,@c2){
+    background: -moz-linear-gradient(top, @c1 0%, @c2 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@c1), color-stop(100%,@c2));
+    background: -webkit-linear-gradient(top, @c1 0%,@c2 100%);
+    background: -o-linear-gradient(top, @c1 0%,@c2 100%);
+    background: -ms-linear-gradient(top, @c1 0%,@c2 100%);
+    background: linear-gradient(to bottom, @c1 0%,@c2 100%);
+}
+.gradient-lr(@c1,@c2){
+    background: -moz-linear-gradient(left, @c1 0%, @c2 100%);
+    background: -webkit-gradient(linear, top left, left right, color-stop(0%,@c1), color-stop(100%,@c2));
+    background: -webkit-linear-gradient(left, @c1 0%,@c2 100%);
+    background: -o-linear-gradient(left, @c1 0%,@c2 100%);
+    background: -ms-linear-gradient(left, @c1 0%,@c2 100%);
+    background: linear-gradient(to right, @c1 0%,@c2 100%);
+}
+//边框
+.border(@color:@border_color){
+    border: 1px solid @color;
+}
+.border-l(@color:@border_color){
+    border-left: 1px solid @color;
+}
+.border-r(@color:@border_color){
+    border-right: 1px solid @color;
+}
+.border-t(@color:@border_color){
+    border-top: 1px solid @color;
+}
+.border-b(@color:@border_color){
+    border-bottom: 1px solid @color;
+}
+// 匹配模式-三角
+// .arrow_t{.triangle(top,20px,pink);}
+// .arrow_r{.triangle(right,20px,pink);}
+// .arrow_b{.triangle(bottom,20px,pink);}
+// .arrow_l{.triangle(left,20px,pink);}
+.triangle(top,@w,@c){
+  border-width: @w;
+  border-color: transparent transparent @c transparent;
+  border-style: dashed dashed solid dashed;
+}
+.triangle(right,@w,@c){
+  border-width: @w;
+  border-color: transparent transparent transparent @c;
+  border-style: dashed dashed dashed solid;
+}
+.triangle(bottom,@w,@c){
+  border-width: @w;
+  border-color: @c transparent transparent transparent;
+  border-style: solid dashed dashed dashed;
+}
+.triangle(left,@w,@c){
+  border-width: @w;
+  border-color:  transparent @c transparent transparent;
+  border-style: dashed solid dashed dashed;
+}
+.triangle(@_,@w,@c){
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
