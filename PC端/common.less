@@ -37,12 +37,22 @@ i,em{
 }
 button{
   border:0;
+  background: none;
 }
 a,button,input,optgroup,select,textarea, div {
   -webkit-tap-highlight-color:rgba(0,0,0,0)
 }
 input:focus,textarea:focus,select:focus{
   outline:none;
+}
+//选中文本样式
+::selection {
+    background:@main_color;
+    color:#fff;
+}
+::-moz-selection {
+    background:@main_color;
+    color:#fff;
 }
 /*E 清除默认样式*/
 /*S 公用类*/
@@ -538,3 +548,18 @@ input:focus,textarea:focus,select:focus{
     .animation-direction(alternate);
 }
 /*E 公用类*/
+/*S 百度分享默认样式清除*/
+.h_share_box.bdshare-button-style0-32 a{
+    float: none;
+    width: auto;
+    line-height: normal;
+    height: auto;
+    background-image: none;
+    background-repeat: no-repeat;
+    cursor: auto;
+    margin: 0;
+    text-indent:0;
+    overflow: auto;
+    color: inherit;
+}
+/*E 百度分享默认样式清除*/
